@@ -1,0 +1,24 @@
+0000000000000000000000000000000000000000 bf3d4ab442ca2fa8e829058b4172fa65e8a6b0b9 Jan Lehtinen <me@janlehtinen.com> 1682420206 +0300	commit (initial): Initial lazyvim starter setup with rose-pine and some small adjustments
+bf3d4ab442ca2fa8e829058b4172fa65e8a6b0b9 f028000fb55896e27b585667ad64c47fa5333b64 Jan Lehtinen <me@janlehtinen.com> 1682713742 +0300	commit: add prefered plugins
+f028000fb55896e27b585667ad64c47fa5333b64 ae49890d8ed8745d25e16aba4ee2b17c0ef507a7 Jan Lehtinen <me@janlehtinen.com> 1682714949 +0300	commit: Rename theme to colorscheme, add tsc plugin
+ae49890d8ed8745d25e16aba4ee2b17c0ef507a7 2ea91e164c7fc898693eabf75f1d06a917ce3fda Jan Lehtinen <me@janlehtinen.com> 1683576269 +0300	commit: asd
+2ea91e164c7fc898693eabf75f1d06a917ce3fda b7cd05a019c92012eeb80fb3ddf9ff362effb6f7 Jan Lehtinen <me@janlehtinen.com> 1685591206 +0300	commit: add more plugins to match worklflow
+b7cd05a019c92012eeb80fb3ddf9ff362effb6f7 38d8fde86b91e90ff030a979677eb1eea3822217 Jan Lehtinen <me@janlehtinen.com> 1685591369 +0300	rebase (finish): refs/heads/main onto ae49890d8ed8745d25e16aba4ee2b17c0ef507a7
+38d8fde86b91e90ff030a979677eb1eea3822217 bedec9eff4ec69d239a3e6c6778946b6a0b6b07f Jan Lehtinen <me@janlehtinen.com> 1694168338 +0300	commit: modify plugin configs and add more
+bedec9eff4ec69d239a3e6c6778946b6a0b6b07f 07cc07ca0a4ea47cad361e215875c45a76406406 Jan Lehtinen <me@janlehtinen.com> 1700479670 +0200	commit: updates to config and plugins
+07cc07ca0a4ea47cad361e215875c45a76406406 c51fc74cc5f18069aa18c383cd367dc1910c1b8b Jan Lehtinen <me@janlehtinen.com> 1700652455 +0200	commit: feat: add extra telescope search keys
+c51fc74cc5f18069aa18c383cd367dc1910c1b8b 3a9d03eef00467469db75d3e2a9d2d721d55562f Jan Lehtinen <me@janlehtinen.com> 1700652511 +0200	commit: fix: Change concealleave for json
+3a9d03eef00467469db75d3e2a9d2d721d55562f 3655a255d72f6916a45bbec593dc5914866a26f5 Jan Lehtinen <me@janlehtinen.com> 1700657776 +0200	commit: feat(*): rework the plugins directory files
+3655a255d72f6916a45bbec593dc5914866a26f5 2414b3a4b8a2910fdc5ef3d6baf3226f5e3b89e2 Jan Lehtinen <me@janlehtinen.com> 1700657798 +0200	commit (amend): feat(*): rework the plugins directory files
+2414b3a4b8a2910fdc5ef3d6baf3226f5e3b89e2 e629d339342c5483dfdefc53169724cf2bca496d Jan Lehtinen <me@janlehtinen.com> 1700660598 +0200	commit: feat: update keymaps
+e629d339342c5483dfdefc53169724cf2bca496d e21ba799153d36d1bbf5bcb0051996c8404dd3df Jan Lehtinen <me@janlehtinen.com> 1700660623 +0200	commit: feat: general small updates
+e21ba799153d36d1bbf5bcb0051996c8404dd3df 01a7deb8e380db0773f533648d7a4f0fd615b179 Jan Lehtinen <me@janlehtinen.com> 1700660687 +0200	commit: fix: remove hipatterns extras
+01a7deb8e380db0773f533648d7a4f0fd615b179 acf9025aa4b3e1fdf12cce9eb49ec71a6b78dd97 Jan Lehtinen <me@janlehtinen.com> 1700661517 +0200	commit: feat: change cmp behaviour to use SuperTab
+acf9025aa4b3e1fdf12cce9eb49ec71a6b78dd97 b1a4de8220e5524612d0331841e6c320e6bc9e56 Jan Lehtinen <me@janlehtinen.com> 1700685696 +0200	commit: feat: remove nvim-autopairs as it's already part of LazyVim
+b1a4de8220e5524612d0331841e6c320e6bc9e56 9e99d50bcaae3cb563f6b9f14787b057018e9ea0 Jan Lehtinen <me@janlehtinen.com> 1700687206 +0200	commit: feat: add more convenient harpoon keymaps for testing
+9e99d50bcaae3cb563f6b9f14787b057018e9ea0 af08eee219ffb675f6f75c624e1e97135bfa9c1f Jan Lehtinen <me@janlehtinen.com> 1701983173 +0200	commit: feat: add new keymaps
+af08eee219ffb675f6f75c624e1e97135bfa9c1f 04055d36b734d0c9dcf2052ffd662268bcf3b153 Jan Lehtinen <me@janlehtinen.com> 1701985744 +0200	commit: feat: hide colorizer highlight for names
+04055d36b734d0c9dcf2052ffd662268bcf3b153 90002f1da1b21281b176a00eba656c81240added Jan Lehtinen <me@janlehtinen.com> 1701985799 +0200	commit (amend): feat: hide colorizer highlight for names
+90002f1da1b21281b176a00eba656c81240added ac6740dd849ca1430e5dded2f4ca9072a6657f3a Jan Lehtinen <me@janlehtinen.com> 1701985817 +0200	commit (amend): feat: hide colorizer highlight for names
+ac6740dd849ca1430e5dded2f4ca9072a6657f3a 301cc17f706ccd6d69e7df7b585811c8d615843e Jan Lehtinen <me@janlehtinen.com> 1708669601 +0200	commit: feat: Add neogen comments, zen-mode, obsidian and rounded lualine sections
+301cc17f706ccd6d69e7df7b585811c8d615843e 3dd0de2434e4f7c7ededbb5f675c15d545fd418b Jan Lehtinen <me@janlehtinen.com> 1708669922 +0200	commit: feat: update readme
