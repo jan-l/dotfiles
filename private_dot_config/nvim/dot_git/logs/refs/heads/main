@@ -1,2 +1,3 @@
 0000000000000000000000000000000000000000 316558958a019520699939daa4f481b04379286b Jan Lehtinen <me@janlehtinen.com> 1711048256 +0200	commit (initial): Initial config
 316558958a019520699939daa4f481b04379286b 526795df7bc9e4060197c8a51f11858dd1371fe2 Jan Lehtinen <me@janlehtinen.com> 1711048484 +0200	rebase (finish): refs/heads/main onto 4c02e29e49bf2e3b478f751f9dd78ae4b138232a
+526795df7bc9e4060197c8a51f11858dd1371fe2 c5336d5de0ba44107d7bc57f5a8d630d50837038 Jan Lehtinen <me@janlehtinen.com> 1711055879 +0200	commit: chore: Update readme, remove kickstarter leftovers
