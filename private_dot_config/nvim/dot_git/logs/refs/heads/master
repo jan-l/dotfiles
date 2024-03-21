@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 3cfccc01be47259613e39196e6a6901ceecc3a0f Jan Lehtinen <me@janlehtinen.com> 1710171893 +0200	clone: from https://github.com/nvim-lua/kickstart.nvim.git
+3cfccc01be47259613e39196e6a6901ceecc3a0f 3c2f31519b7b919d30772a4df6f61d0880de177f Jan Lehtinen <me@janlehtinen.com> 1710882805 +0200	commit: Initial config
+3c2f31519b7b919d30772a4df6f61d0880de177f 991115cc334a0e4353fd49b27d6c1411ddea9891 Jan Lehtinen <me@janlehtinen.com> 1710883222 +0200	rebase (finish): refs/heads/master onto 773e482d4b40cec4095e4b60fbd753cb69b3f51b
+991115cc334a0e4353fd49b27d6c1411ddea9891 26872648464b54187b5d6034d69a862e3b53d778 Jan Lehtinen <me@janlehtinen.com> 1711047571 +0200	commit: Restructured and preconfigured lazyvim clone using kickstart
+26872648464b54187b5d6034d69a862e3b53d778 c535e553fc01adbcebb24608866eae29d940beb5 Jan Lehtinen <me@janlehtinen.com> 1711047595 +0200	commit (amend): Restructured and preconfigured lazyvim clone using kickstart

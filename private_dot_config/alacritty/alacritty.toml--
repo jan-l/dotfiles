@@ -1,0 +1,112 @@
+import = ["/Users/janlehtinen/.config/alacritty/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 18
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Medium Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+[[keyboard.bindings]]
+chars = "\u0014\""
+key = "E"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0014%"
+key = "E"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0014c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0014x"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0014T"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0014z"
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0014u"
+key = "O"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00141"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00142"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00143"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00144"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00145"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00146"
+key = "Key6"
+mods = "Command"
+
+[shell]
+program = "/opt/homebrew/bin/fish"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+dynamic_title = true
+opacity = 0.9
+
+[window.padding]
+x = 20
+y = 20
+
+[scrolling]
+history = 10000
+multiplier = 3

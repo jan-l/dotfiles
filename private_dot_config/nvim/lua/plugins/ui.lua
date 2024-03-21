@@ -1,7 +1,7 @@
 -- show lsp server name in statusline
 local function lsp()
-  local msg = "No Active Lsp"
-  local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+  local msg = 'No Active Lsp'
+  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
   local clients = vim.lsp.get_active_clients()
   if next(clients) == nil then
     return msg
@@ -16,91 +16,160 @@ local function lsp()
 end
 
 return {
-  -- statusline
+  -- icons
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
   {
-    "nvim-lualine/lualine.nvim",
-    opts = {
-      sections = {
-        -- use default sections but overwrite some
-        lualine_a = { { "mode", separator = { left = "" } } },
-        lualine_b = { "branch", "diagnostics" },
-        lualine_y = { lsp },
-        lualine_z = { "progress", "location" },
-      },
-      options = {
-        theme = "auto",
-        section_separators = { left = "", right = "" },
-        -- component_separators = { left = "", right = "" },
-        component_separators = "",
-      },
-    },
+    'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
+    init = function()
+      vim.g.lualine_laststatus = vim.o.laststatus
+      if vim.fn.argc(-1) > 0 then
+        -- set an empty statusline till lualine loads
+        vim.o.statusline = ' '
+      else
+        -- hide the statusline on the starter page
+        vim.o.laststatus = 0
+      end
+    end,
+    opts = function()
+      local icons = require("icons").icons
+      return {
+        sections = {
+          -- use default sections but overwrite some
+          lualine_a = { { 'mode', separator = { left = '' } } },
+          lualine_b = { 'branch'},
+          lualine_c = {
+              {
+                "diagnostics",
+                symbols = {
+                  error = icons.diagnostics.Error,
+                  warn = icons.diagnostics.Warn,
+                  info = icons.diagnostics.Info,
+                  hint = icons.diagnostics.Hint,
+                },
+              },
+          },
+          -- 
+          lualine_x = {
+            {
+              "diff",
+              symbols = {
+                added = icons.git.added,
+                modified = icons.git.modified,
+                removed = icons.git.removed,
+              },
+              source = function()
+                local gitsigns = vim.b.gitsigns_status_dict
+                if gitsigns then
+                  return {
+                    added = gitsigns.added,
+                    modified = gitsigns.changed,
+                    removed = gitsigns.removed,
+                  }
+                end
+              end,
+            },
+          },
+          lualine_y = { lsp },
+          lualine_z = { 'progress', 'location' },
+        },
+        options = {
+          theme = 'auto',
+          section_separators = { left = '', right = '' },
+          -- component_separators = { left = '', right = '' },
+          component_separators = '',
+        },
+        extensions = { 'neo-tree', 'lazy' },
+      }
+    end,
   },
-  -- bufferline
+  -- indent guides for Neovim
   {
-    "akinsho/nvim-bufferline.lua",
-    -- keys are configured in keymaps.lua
+    'lukas-reineke/indent-blankline.nvim',
+    event = 'VeryLazy',
     opts = {
-      options = {
-        mode = "tabs",
-        show_buffer_close_icons = false,
-        show_close_icon = false,
+      indent = {
+        char = '│',
+        tab_char = '│',
       },
-    },
-  },
-  {
-    "noice.nvim",
-    opts = {
-      enabled = true,
-      routes = {
-        {
-          filter = { event = "notify", find = "No information available" },
-          opts = { skip = true },
+      scope = { enabled = false },
+      exclude = {
+        filetypes = {
+          'help',
+          'alpha',
+          'dashboard',
+          'neo-tree',
+          'Trouble',
+          'trouble',
+          'lazy',
+          'mason',
+          'notify',
+          'toggleterm',
+          'lazyterm',
         },
       },
-      cmdline = { view = "cmdline" },
-      views = {
-        mini = { win_options = { winblend = 0 } },
-      },
-      presets = {
-        lsp_doc_border = true,
-        command_palette = false,
-      },
-      lsp = {
-        progress = {
-          enabled = true,
-        },
-      },
     },
+    main = 'ibl',
   },
+  -- Active indent guide and indent text objects. When you're browsing
+  -- code, this highlights the current level of indentation, and animates
+  -- the highlighting.
   {
-    "rcarriga/nvim-notify",
+    'echasnovski/mini.indentscope',
+    version = false, -- wait till new 0.7.0 release to put it back on semver
+    event = 'VeryLazy',
     opts = {
-      render = "compact",
-      stages = "static",
+      -- symbol = "▏",
+      symbol = '│',
+      options = { try_as_border = true },
     },
+    init = function()
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = {
+          'help',
+          'alpha',
+          'dashboard',
+          'neo-tree',
+          'Trouble',
+          'trouble',
+          'lazy',
+          'mason',
+          'notify',
+          'toggleterm',
+          'lazyterm',
+        },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
   },
-  -- filename
+{
+  'stevearc/dressing.nvim',
+  opts = {},
+},
+  -- filename per window
   {
-    "b0o/incline.nvim",
-    event = "BufReadPre",
+    'b0o/incline.nvim',
+    event = 'BufReadPre',
     priority = 1200,
     config = function()
-      require("incline").setup({
+      require('incline').setup {
         highlight = {
           groups = {},
         },
         window = { margin = { vertical = 0, horizontal = 0 } },
         hide = { cursorline = true },
         render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
           if vim.bo[props.buf].modified then
-            filename = "[+] " .. filename
+            filename = '[+] ' .. filename
           end
 
-          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-          return { { icon, guifg = color }, { " " }, { filename } }
+          local icon, color = require('nvim-web-devicons').get_icon_color(filename)
+          return { { icon, guifg = color }, { ' ' }, { filename } }
         end,
-      })
+      }
     end,
   },
 }

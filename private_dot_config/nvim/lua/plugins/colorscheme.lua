@@ -1,38 +1,42 @@
--- comment here
 return {
   {
-    "catppuccin/nvim",
+    'catppuccin/nvim',
+    lazy = false,
+    priority = 1000,
     enabled = true,
-    name = "catppuccin",
+    config = function()
+      vim.cmd [[colorscheme catppuccin]]
+    end,
+    name = 'catppuccin',
     opts = {
-      flavour = "mocha",
+      flavour = 'mocha',
       transparent_background = true,
       integrations = {
-        mason = true,
         cmp = true,
         dashboard = true,
         gitsigns = true,
-        treesitter = true,
-        notify = true,
-        mini = true,
         harpoon = true,
-        symbols_outline = true,
         indent_blankline = {
           enabled = true,
           color_indented_levels = false,
         },
+        lsp_trouble = true,
+        mason = true,
+        markdown = true,
+        mini = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { 'undercurl' },
+          }
+        },
         neotree = true,
-        noice = true,
-        treesitter_context = true,
         telescope = true,
+        treesitter = true,
+        treesitter_context = true,
+        symbols_outline = true,
         which_key = true,
       },
-    },
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
     },
   },
 }

@@ -1,1 +1,30 @@
-feat: update readme
+Restructured and preconfigured lazyvim clone using kickstart
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu Mar 21 20:59:31 2024 +0200
+#
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   init.lua
+#	renamed:    lua/config/autocmds.lua -> lua/autocmds.lua
+#	new file:   lua/icons.lua
+#	renamed:    lua/config/keymaps.lua -> lua/keymaps.lua
+#	renamed:    lua/config/options.lua -> lua/options.lua
+#	new file:   lua/plugins/cmp.lua
+#	modified:   lua/plugins/coding.lua
+#	modified:   lua/plugins/colorscheme.lua
+#	modified:   lua/plugins/editor.lua
+#	deleted:    lua/plugins/kickstart.lua
+#	new file:   lua/plugins/linting.lua
+#	new file:   lua/plugins/lsp.lua
+#	new file:   lua/plugins/mini.lua
+#	new file:   lua/plugins/telescope.lua
+#	new file:   lua/plugins/treesitter.lua
+#	modified:   lua/plugins/ui.lua
+#	modified:   lua/plugins/util.lua
+#
