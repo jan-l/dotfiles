@@ -1,0 +1,5 @@
+[user]
+	email = ext-jan.lehtinen@vaisala.com
+	name = Jan Lehtinen
+[pull]
+	rebase = true
