@@ -1,8 +1,4 @@
-0000000000000000000000000000000000000000 3cfccc01be47259613e39196e6a6901ceecc3a0f Jan Lehtinen <me@janlehtinen.com> 1710171893 +0200	clone: from https://github.com/nvim-lua/kickstart.nvim.git
-3cfccc01be47259613e39196e6a6901ceecc3a0f 3c2f31519b7b919d30772a4df6f61d0880de177f Jan Lehtinen <me@janlehtinen.com> 1710882805 +0200	commit: Initial config
-3c2f31519b7b919d30772a4df6f61d0880de177f 3c2f31519b7b919d30772a4df6f61d0880de177f Jan Lehtinen <me@janlehtinen.com> 1710883105 +0200	checkout: moving from master to master
-3c2f31519b7b919d30772a4df6f61d0880de177f 773e482d4b40cec4095e4b60fbd753cb69b3f51b Jan Lehtinen <me@janlehtinen.com> 1710883125 +0200	rebase (start): checkout upstream/master
-773e482d4b40cec4095e4b60fbd753cb69b3f51b 991115cc334a0e4353fd49b27d6c1411ddea9891 Jan Lehtinen <me@janlehtinen.com> 1710883222 +0200	rebase (continue): Initial config
-991115cc334a0e4353fd49b27d6c1411ddea9891 991115cc334a0e4353fd49b27d6c1411ddea9891 Jan Lehtinen <me@janlehtinen.com> 1710883222 +0200	rebase (finish): returning to refs/heads/master
-991115cc334a0e4353fd49b27d6c1411ddea9891 26872648464b54187b5d6034d69a862e3b53d778 Jan Lehtinen <me@janlehtinen.com> 1711047571 +0200	commit: Restructured and preconfigured lazyvim clone using kickstart
-26872648464b54187b5d6034d69a862e3b53d778 c535e553fc01adbcebb24608866eae29d940beb5 Jan Lehtinen <me@janlehtinen.com> 1711047595 +0200	commit (amend): Restructured and preconfigured lazyvim clone using kickstart
+0000000000000000000000000000000000000000 316558958a019520699939daa4f481b04379286b Jan Lehtinen <me@janlehtinen.com> 1711048256 +0200	commit (initial): Initial config
+316558958a019520699939daa4f481b04379286b 4c02e29e49bf2e3b478f751f9dd78ae4b138232a Jan Lehtinen <me@janlehtinen.com> 1711048382 +0200	rebase (start): checkout upstream/master
+4c02e29e49bf2e3b478f751f9dd78ae4b138232a 526795df7bc9e4060197c8a51f11858dd1371fe2 Jan Lehtinen <me@janlehtinen.com> 1711048483 +0200	rebase (continue): Initial config
+526795df7bc9e4060197c8a51f11858dd1371fe2 526795df7bc9e4060197c8a51f11858dd1371fe2 Jan Lehtinen <me@janlehtinen.com> 1711048484 +0200	rebase (finish): returning to refs/heads/main
