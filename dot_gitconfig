@@ -1,0 +1,8 @@
+[pull]
+	# ff = only
+[user]
+	email = me@janlehtinen.com
+	name = Jan Lehtinen
+
+[includeIf "gitdir:~/code/vaisala/"]
+	path = ~/vaisala.gitconfig
