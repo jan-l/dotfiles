@@ -1,4 +1,0 @@
-0000000000000000000000000000000000000000 4c02e29e49bf2e3b478f751f9dd78ae4b138232a Jan Lehtinen <me@janlehtinen.com> 1711048335 +0200	fetch upstream: storing head
-4c02e29e49bf2e3b478f751f9dd78ae4b138232a dbba54cfd81506a20832aade85735bf4dc377b95 Jan Lehtinen <me@janlehtinen.com> 1711055200 +0200	fetch --append --no-auto-gc --no-write-commit-graph upstream: fast-forward
-dbba54cfd81506a20832aade85735bf4dc377b95 93fde0556e82ead2a5392ccb678359fa59437b98 Jan Lehtinen <me@janlehtinen.com> 1711632520 +0200	fetch --append --no-auto-gc --no-write-commit-graph upstream: fast-forward
-93fde0556e82ead2a5392ccb678359fa59437b98 f5c9fe8e15aafb6857706e3c05b5eee4ecb98a2b Jan Lehtinen <me@janlehtinen.com> 1713505207 +0300	fetch --append --no-auto-gc --no-write-commit-graph upstream: fast-forward
