@@ -83,4 +83,13 @@ return {
     event = 'VeryLazy',
     opts = {},
   },
+  {
+    'Wansmer/treesj',
+    keys = { '<leader>m' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup {--[[ your config ]]
+      }
+    end,
+  },
 }

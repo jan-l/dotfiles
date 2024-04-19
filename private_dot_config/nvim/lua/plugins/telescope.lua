@@ -13,24 +13,36 @@ return { -- Fuzzy Finder (files, lsp, etc)
         return vim.fn.executable 'make' == 1
       end,
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
+    'nvim-telescope/telescope-ui-select.nvim',
+    'folke/todo-comments.nvim',
   },
   config = function()
+    local trouble = require 'trouble'
+    local trouble_telescope = require 'trouble.providers.telescope'
+    local transform_mod = require('telescope.actions.mt').transform_mod
+
+    local custom_actions = transform_mod {
+      open_trouble_qflist = function(prompt_bufnr)
+        trouble.toggle 'quickfix'
+      end,
+    }
     -- See `:help telescope` and `:help telescope.setup()`
     require('telescope').setup {
       defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "bottom" },
-        sorting_strategy = "descending",
+        path_display = { 'smart' },
+        layout_strategy = 'horizontal',
+        layout_config = { prompt_position = 'bottom' },
+        sorting_strategy = 'descending',
         winblend = 0,
         mappings = {
           n = {
             ['q'] = require('telescope.actions').close,
           },
           i = {
-            ["<C-j>"] = require("telescope.actions").move_selection_next, -- move to next result
-            ["<C-k>"] = require("telescope.actions").move_selection_previous, -- move to prev result
-            ["<C-q"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist,
+            ['<C-j>'] = require('telescope.actions').move_selection_next, -- move to next result
+            ['<C-k>'] = require('telescope.actions').move_selection_previous, -- move to prev result
+            ['<C-q'] = require('telescope.actions').send_selected_to_qflist + custom_actions.open_trouble_qflist,
+            ['<C-t'] = trouble_telescope.smart_open_with_trouble,
           },
         },
       },
@@ -58,6 +70,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>s,', builtin.resume, { desc = '[S]earch Resume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    -- vim.keymap.set('n', '<leader>sbc', builtin.bcommits, { desc = '[S]earch [B]uffer [C]ommits' })
+
+    vim.keymap.set('n', '<leader>sa', function()
+      builtin.find_files {
+        hidden = true,
+        no_ignore = true,
+      }
+    end, { desc = '[S]earch [A]ll Files' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()

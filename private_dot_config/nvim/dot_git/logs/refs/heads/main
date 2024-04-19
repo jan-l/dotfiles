@@ -1,3 +1,8 @@
 0000000000000000000000000000000000000000 316558958a019520699939daa4f481b04379286b Jan Lehtinen <me@janlehtinen.com> 1711048256 +0200	commit (initial): Initial config
 316558958a019520699939daa4f481b04379286b 526795df7bc9e4060197c8a51f11858dd1371fe2 Jan Lehtinen <me@janlehtinen.com> 1711048484 +0200	rebase (finish): refs/heads/main onto 4c02e29e49bf2e3b478f751f9dd78ae4b138232a
 526795df7bc9e4060197c8a51f11858dd1371fe2 c5336d5de0ba44107d7bc57f5a8d630d50837038 Jan Lehtinen <me@janlehtinen.com> 1711055879 +0200	commit: chore: Update readme, remove kickstarter leftovers
+c5336d5de0ba44107d7bc57f5a8d630d50837038 9448330062a8ef529c8ee88da248cfb808e93adf Jan Lehtinen <me@janlehtinen.com> 1711633415 +0200	commit: feat: add lazygit tmux keybind, set diagnostics keymaps under uppercase X
+9448330062a8ef529c8ee88da248cfb808e93adf b8633e8547dc21d068176548aad035812a00043f Jan Lehtinen <me@janlehtinen.com> 1711633448 +0200	commit (amend): feat: add lazygit tmux keybind, set diagnostics keymaps under uppercase X
+b8633e8547dc21d068176548aad035812a00043f 1e1e0e23870b61cd35e512944d651cc2f6e9fe6b Jan Lehtinen <me@janlehtinen.com> 1711633474 +0200	commit (amend): feat: add keybinds, remap keybind groups to more consistent behaviour and add missing which key descriptions
+1e1e0e23870b61cd35e512944d651cc2f6e9fe6b b09a6e47e0d268f5a63622cefbaf8db772f67c31 Jan Lehtinen <me@janlehtinen.com> 1711633536 +0200	commit: feat: add transparent.nvim
+b09a6e47e0d268f5a63622cefbaf8db772f67c31 631b55cd38d70071f39b7d5989df3b323f81ab79 Jan Lehtinen <me@janlehtinen.com> 1713505233 +0300	commit: feat: refactor and restructure plugins directory for better overview readability

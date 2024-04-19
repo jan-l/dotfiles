@@ -28,7 +28,7 @@ return {
           enabled = true,
           underlines = {
             errors = { 'undercurl' },
-          }
+          },
         },
         neotree = true,
         telescope = true,
@@ -38,5 +38,8 @@ return {
         which_key = true,
       },
     },
+  },
+  {
+    'xiyaowong/transparent.nvim',
   },
 }

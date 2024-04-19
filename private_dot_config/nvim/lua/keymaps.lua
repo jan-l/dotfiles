@@ -26,30 +26,25 @@ vim.keymap.set({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { expr = true,
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>x', vim.diagnostic.open_float, { desc = 'Show diagnostic Error messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = 'Show diagnostic Error messages' })
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
 -- Move lines in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<cr>gv=gv", { desc = 'Move down' })
 vim.keymap.set('v', 'K', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
 
 -- paste over currently selected text without yanking it
-vim.keymap.set("v", "p", '"_dp', { desc = "which_key_ignore" })
-vim.keymap.set("v", "P", '"_dP', { desc = "which_key_ignore" })
+vim.keymap.set('v', 'p', '"_dp', { desc = 'which_key_ignore' })
+vim.keymap.set('v', 'P', '"_dP', { desc = 'which_key_ignore' })
 
 -- better scrolling with centered cursor
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "which_key_ignore" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "which_key_ignore" })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'which_key_ignore' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'which_key_ignore' })
 
 -- search and replace word in buffer
-vim.keymap.set(
-  "n",
-  "<leader>br",
-  [[>:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = "Search and replace word in buffer" }
-)
+vim.keymap.set('n', '<leader>br', [[>:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Search and replace word in buffer' })
 
-vim.keymap.set("n", "<leader>lr", ":LspRestart<CR>")
+vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>')
 -- better indenting
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
@@ -63,6 +58,7 @@ vim.keymap.set('i', 'jk', '<esc>', { desc = 'Exit insert mode' })
 vim.keymap.set('n', 'x', '"_x', { desc = 'which_key_ignore' })
 -- quit
 vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -72,9 +68,4 @@ vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- lazygit
--- vim.keymap.set('n', '<leader>gg', function()
---   Util.terminal({ 'lazygit' }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
--- end, { desc = 'Lazygit (root dir)' })
--- vim.keymap.set('n', '<leader>gG', function()
---   Util.terminal({ 'lazygit' }, { esc_esc = false, ctrl_hjkl = false })
--- end, { desc = 'Lazygit (cwd)' })
+vim.keymap.set('n', '<leader>gg', ':!tmux new-window -c ' .. vim.fn.getcwd() .. ' -- lazygit <CR><CR>', { silent = true, desc = 'Open Lazy[G]it' })
