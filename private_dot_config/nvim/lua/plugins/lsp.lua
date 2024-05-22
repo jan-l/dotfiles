@@ -12,9 +12,6 @@ return {
 
       -- Install neodev for better nvim configuration and plugin authoring via lsp configurations
       'folke/neodev.nvim',
-
-      -- Progress/Status update for LSP
-      { 'j-hui/fidget.nvim', tag = 'legacy' },
     },
     opts = {
       diagnostics = {
@@ -24,10 +21,10 @@ return {
 
         signs = {
           text = {
-            -- [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-            -- [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
-            -- [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-            -- [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+            [vim.diagnostic.severity.ERROR] = require('icons').icons.diagnostics.Error,
+            [vim.diagnostic.severity.WARN] = require('icons').icons.diagnostics.Warn,
+            [vim.diagnostic.severity.HINT] = require('icons').icons.diagnostics.Hint,
+            [vim.diagnostic.severity.INFO] = require('icons').icons.diagnostics.Info,
           },
         },
       },
@@ -120,10 +117,12 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
+        astro = {},
         bashls = {},
         cssls = {},
         html = {},
         jsonls = {},
+        tailwindcss = { filetypes = { 'astro' } },
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},

@@ -5,6 +5,7 @@ return {
   { 'nvim-lua/plenary.nvim', lazy = true },
   {
     'stevearc/dressing.nvim',
+    lazy = true,
     opts = {},
   },
   -- Better tmux and vim pane navigation

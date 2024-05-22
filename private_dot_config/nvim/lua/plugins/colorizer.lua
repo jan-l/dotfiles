@@ -9,6 +9,7 @@ return {
     },
     user_default_options = {
       hsl_fn = true,
+      names = false,
     },
   },
 }

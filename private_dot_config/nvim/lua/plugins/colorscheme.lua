@@ -42,27 +42,46 @@ return {
       vim.cmd.colorscheme 'catppuccin'
     end,
   },
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    lazy = false,
-    priority = 1000,
-    enabled = false,
-    config = function()
-      require('rose-pine').setup {
-        variant = 'moon',
-        highlight_groups = {
-          TelescopeBorder = { fg = 'highlight_high', bg = 'none' },
-          TelescopeNormal = { bg = 'none' },
-          TelescopePromptNormal = { bg = 'base' },
-          TelescopeResultsNormal = { fg = 'subtle', bg = 'none' },
-          TelescopeSelection = { fg = 'text', bg = 'base' },
-          TelescopeSelectionCaret = { fg = 'rose', bg = 'rose' },
-        },
-      }
-      vim.cmd.colorscheme 'rose-pine'
-    end,
-  },
+  -- {
+  --   'rose-pine/neovim',
+  --   name = 'rose-pine',
+  --   lazy = false,
+  --   priority = 1000,
+  --   enabled = false,
+  --   config = function()
+  --     require('rose-pine').setup {
+  --       variant = 'moon',
+  --       disable_float_background = true,
+  --       styles = {
+  --         transparent = true,
+  --       },
+  --       highlight_groups = {
+  --         -- Blend colours against the "base" background
+  --         CursorLine = { bg = 'foam', blend = 10 },
+  --         Delimeter = { fg = 'iris' },
+  --         IndentBlanklineContextChar = { fg = 'iris' },
+  --         PMenu = { bg = 'base', blend = 10 },
+  --       },
+  --     }
+  --     vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  --       -- Use a sharp border with `FloatBorder` highlights
+  --       border = 'none',
+  --       -- add the title in hover float window
+  --       -- title = 'hover',
+  --     })
+  --     vim.cmd.colorscheme 'rose-pine'
+  --   end,
+  -- },
+  -- {
+  --   'oxfist/night-owl.nvim',
+  --   name = 'night-owl',
+  --   lazy = false,
+  --   priority = 1000,
+  --   enabled = false,
+  --   config = function()
+  --     vim.cmd.colorscheme 'night-owl'
+  --   end,
+  -- },
   {
     'xiyaowong/transparent.nvim',
   },

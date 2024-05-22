@@ -86,6 +86,9 @@ return {
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
           ['<C-k>'] = cmp.mapping.select_prev_item(),
+          -- scroll docs up and down
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-u>'] = cmp.mapping.scroll_docs(4),
 
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
@@ -151,6 +154,20 @@ return {
           return vim_item
         end,
       }
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' },
+        },
+      })
+      -- cmp.setup.cmdline(':', {
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = cmp.config.sources({
+      --     { name = 'path' },
+      --   }, {
+      --     { name = 'cmdline' },
+      --   }),
+      -- })
     end,
   },
 }

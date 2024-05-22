@@ -4,11 +4,17 @@ vim.opt.relativenumber = true
 
 -- Use spaces instead of tabs
 vim.opt.expandtab = true
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 
 -- insert indents automatically
 vim.opt.smartindent = true
 
--- Enable break indent
+-- scroll offset
+vim.opt.scrolloff = 8
+
+-- Enable break indent, wraps lines with indent
 vim.opt.breakindent = true
 
 -- Enable incremental search
@@ -67,3 +73,12 @@ vim.opt.scrolloff = 10
 
 -- Turn of swapfile
 vim.opt.swapfile = false
+
+-- UTF-8 encoding
+vim.opt.fileencoding = 'utf-8'
+
+-- hide tilde on end of buffer
+vim.opt.fillchars = { eob = ' ' }
+
+-- use ripgrep
+vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
