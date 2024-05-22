@@ -1,4 +1,4 @@
-import = ["/Users/janlehtinen/.config/alacritty/catppuccin-mocha.toml"]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [cursor]
@@ -95,7 +95,7 @@ key = "Key6"
 mods = "Command"
 
 [shell]
-program = "/opt/homebrew/bin/fish"
+# program = "/opt/homebrew/bin/fish"
 
 [window]
 decorations = "buttonless"
