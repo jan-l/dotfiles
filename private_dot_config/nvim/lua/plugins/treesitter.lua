@@ -49,7 +49,6 @@ return {
           disable = { 'python' },
         },
         autopairs = { enable = true },
-        autotag = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {
@@ -71,10 +70,16 @@ return {
               ['if'] = '@function.inner',
               ['ac'] = '@class.outer',
               ['ic'] = '@class.inner',
+              ['ii'] = '@conditional.inner',
+              ['ai'] = '@conditional.outer',
+              ['il'] = '@loop.inner',
+              ['al'] = '@loop.outer',
+              ['at'] = '@comment.outer',
             },
           },
           move = {
             enable = true,
+            set_jumps = true,
             goto_next_start = { [']f'] = '@function.outer', [']c'] = '@class.outer' },
             goto_next_end = { [']F'] = '@function.outer', [']C'] = '@class.outer' },
             goto_previous_start = { ['[f'] = '@function.outer', ['[c'] = '@class.outer' },
@@ -92,7 +97,7 @@ return {
   },
   {
     'Wansmer/treesj',
-    keys = { '<leader>m' },
+    keys = { '<leader>ct' },
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('treesj').setup {}

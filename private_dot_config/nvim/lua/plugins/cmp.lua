@@ -1,18 +1,4 @@
 return {
-  -- copilot
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    build = ':Copilot auth',
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
-    },
-  },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -28,32 +14,20 @@ return {
           return 'make install_jsregexp'
         end)(),
       },
-      -- copilot in cmp suggestions
-      {
-        'zbirenbaum/copilot-cmp',
-        dependencies = 'copilot.lua',
-        opts = {},
-        config = function(_, opts)
-          local copilot_cmp = require 'copilot_cmp'
-          copilot_cmp.setup(opts)
-          -- attach cmp source whenever copilot attaches
-          -- fixes lazy-loading issues with the copilot cmp source
-          vim.api.nvim_create_autocmd('LspAttach', {
-            callback = function(args)
-              local client = vim.lsp.get_client_by_id(args.data.client_id)
-              if client.name == 'copilot' then
-                copilot_cmp._on_insert_enter {}
-              end
-            end,
-          })
-        end,
-      },
       'saadparwaiz1/cmp_luasnip',
+      -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
+
+      -- Adds a number of snippets
       'rafamadriz/friendly-snippets',
+      'mlaursen/vim-react-snippets',
+
+      -- Adds vscode-like pictograms
       'onsails/lspkind-nvim',
+
+      -- Adds autotags and pairs to completions
       'windwp/nvim-autopairs',
       'windwp/nvim-ts-autotag',
     },
@@ -64,6 +38,36 @@ return {
       local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
       local lspkind = require 'lspkind'
 
+      local kind_icons = {
+        Text = '',
+        Method = '󰆧',
+        Function = '󰊕',
+        Constructor = '',
+        Field = '󰇽',
+        Variable = '󰂡',
+        Class = '󰠱',
+        Interface = '',
+        Module = '',
+        Property = '󰜢',
+        Unit = '',
+        Value = '󰎠',
+        Enum = '',
+        Keyword = '󰌋',
+        Snippet = '',
+        Color = '󰏘',
+        File = '󰈙',
+        Reference = '',
+        Folder = '󰉋',
+        EnumMember = '',
+        Constant = '󰏿',
+        Struct = '',
+        Event = '',
+        Operator = '󰆕',
+        TypeParameter = '󰅲',
+      }
+
+      require('luasnip.loaders.from_vscode').lazy_load()
+      require('vim-react-snippets').lazy_load()
       require('nvim-autopairs').setup()
       -- integrate nvim-autopairs with cmp
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
@@ -120,19 +124,33 @@ return {
           end, { 'i', 's' }),
         },
         sources = {
-          { name = 'copilot' },
+          -- { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'luasnip', max_item_count = 3 },
           { name = 'buffer', max_item_count = 5 },
           { name = 'path', max_item_count = 3 },
         },
         formatting = {
-          expandable_indicator = true,
-          format = lspkind.cmp_format {
-            mode = 'symbol_text',
-            maxwidth = 50,
-            ellipsis_char = '...',
-          },
+          fields = { 'abbr', 'kind', 'menu' },
+          format = function(entry, vim_item)
+            local lspkind_ok, lspkind = pcall(require, 'lspkind')
+            if not lspkind_ok then
+              -- From kind_icons array
+              vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+              -- Source
+              vim_item.menu = ({
+                buffer = '[Buffer]',
+                nvim_lsp = '[LSP]',
+                luasnip = '[LuaSnip]',
+                nvim_lua = '[Lua]',
+                latex_symbols = '[LaTeX]',
+              })[entry.source.name]
+              return vim_item
+            else
+              -- From lspkind
+              return lspkind.cmp_format()(entry, vim_item)
+            end
+          end,
         },
         before = function(entry, vim_item) -- for tailwind css autocomplete
           if vim_item.kind == 'Color' and entry.completion_item.documentation then
@@ -148,10 +166,10 @@ return {
               return vim_item
             end
           end
-          -- vim_item.kind = icons[vim_item.kind] and (icons[vim_item.kind] .. vim_item.kind) or vim_item.kind
+          vim_item.kind = kind_icons[vim_item.kind] and (kind_icons[vim_item.kind] .. vim_item.kind) or vim_item.kind
           -- or just show the icon
-          vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
-          return vim_item
+          -- vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
+          -- return vim_item
         end,
       }
       cmp.setup.cmdline('/', {

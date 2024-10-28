@@ -1,25 +1,29 @@
-<a href="https://www.joshmedeski.com/posts/smart-tmux-sessions-with-zoxide-and-fzf/" target="_blank">
+# Introducing Sesh 🎉
 
-![thumbnail](https://github.com/joshmedeski/t-smart-tmux-session-manager/blob/main/smart-tmux-sessions-with-zoxide-and-fzf.jpeg?raw=true)
+I've rewritten this project in Go and called it "sesh". It's more flexible and faster than the original script. I'm no longer maintaining this project. I'll leave it up for historical purposes, but I recommend you check out the new project.
 
-</a>
+[Check out sesh](https://github.com/joshmedeski/sesh)
 
 # t - the smart tmux session manager
 
 tmux is a powerful tool, but dealing with sessions can be painful. This script makes it easy to create and switch tmux sessions:
 
+<details>
+<summary>Documentation</summary>
+
 ## Prerequisites
 
 - [tmux](https://github.com/tmux/tmux) (>= 3.2)
 - [tpm](https://github.com/tmux-plugins/tpm)
-- [bash](https://www.gnu.org/software/bash/) (>= 4.0)
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - [fzf](https://github.com/junegunn/fzf) (>=0.35.0)
 
-**Note:** Macs have bash v3 preinstalled, you'll need v4 or later for this script. I recommend installing these prerequisites from homebrew to get the latest versions.
+_Note: some users have had issues with fzf integration on tmux 3.2a where upon
+spawning fzf it would lock the tmux pane. Upgrading to 3.3a seems to be a viable
+workaround_ Check [#104](https://github.com/joshmedeski/t-smart-tmux-session-manager/issues/104)
 
-```
-brew install tmux bash zoxide fzf
+```sh
+brew install tmux zoxide fzf
 ```
 
 Use the package manager of your OS if you are not on macOS.
@@ -138,7 +142,119 @@ If you are not in tmux, you can simply run `t` to start the interactive script, 
 - `ctrl-x` list only zoxide results
 - `ctrl-f` find by directory
 
+## Extra features
+
+### Cloning repositories
+
+You can quickly clone a repository to your preferred directory by using the `t` command combined with the `-r` flag (or `--repo`).
+
+First, you have to set the `T_REPOS_DIR` variable in your shell environment. Make sure to set it where you want your repositories cloned.
+
+<details>
+<summary>bash</summary>
+
+Add the following line to `~/.bashrc`
+
+```sh
+export T_REPOS_DIR="~/repos"
+```
+
+</details>
+
+<details>
+<summary>zsh</summary>
+
+Add the following line to `~/.zshrc`
+
+```sh
+export T_REPOS_DIR="~/repos"
+```
+
+</details>
+
+<details>
+<summary>fish</summary>
+
+Add the following line to `~/.config/fish/conf.d/t.fish`
+
+```fish
+set -Ux T_REPOS_DIR ~/repos
+```
+
+</details>
+
+In order to use the feature, simply run:
+
+```sh
+t -r https://github.com/joshmedeski/t-smart-tmux-session-manager.git
+```
+
+**Note:** it has to be a valid git remote url (ending in `.git`) or order to work.
+
+I prefer to copy the repository URL to my clipboard and run the following command on macOS.
+
+<details>
+<summary>bash/zsh</summary>
+
+```sh
+t -r $(pbpaste)
+```
+
+</details>
+
+<details>
+<summary>fish</summary>
+
+```sh
+t -r (pbpaste)
+```
+
+</details>
+
+If you want to overwrite the directory to clone to, you can overwrite the `T_REPOS_DIR` variable before running the command:
+
+```sh
+T_REPOS_DIR=~/code t --repo https://github.com/joshmedeski/tmux-list.git
+```
+
 ## How to customize
+
+### Use Git Root for session name
+
+You may prefer your session names starting from the root of the git repository. This can help with naming conflicts if you have multiple directories with the same name on your machine and make it clear when you have multiple sessions open in the same git repository.
+
+<details>
+<summary>bash</summary>
+
+Add the following line to `~/.bashrc`
+
+```sh
+export T_SESSION_USE_GIT_ROOT="true"
+```
+
+</details>
+
+<details>
+<summary>zsh</summary>
+
+Add the following line to `~/.zshrc`
+
+```sh
+export T_SESSION_USE_GIT_ROOT="true"
+```
+
+</details>
+
+<details>
+<summary>fish</summary>
+
+Add the following line to `~/.config/fish/conf.d/t.fish`
+
+```fish
+set -Ux T_SESSION_USE_GIT_ROOT true
+```
+
+</details>
 
 ### Include parent dir in session name
 
@@ -191,6 +307,18 @@ You can unbind the default by using `none`.
 set -g @t-bind "none" # unbind default
 ```
 
+### Change default fzf results
+
+By default, t will display tmux sessions and zoxide results by default. You can change this by setting `@t-fzf-default-results` variable to your `tmux.conf`:
+
+```sh
+set -g @t-fzf-default-results 'sessions' # show tmux sessions by default
+```
+
+```sh
+set -g @t-fzf-default-results 'zoxide' # show zoxide results by default
+```
+
 ### Custom find command
 
 By default, the find key binding (`^f`) will run a simple `find` command to search for directories in and around your home directory.
@@ -225,10 +353,47 @@ set -Ux FZF_TMUX_OPTS "-p 55%,60%"
 
 Run `man fzf-tmux` to learn more about the available options.
 
+### Custom Border Label
+
+If you want to customize the fzf popup border label, you can add `T_FZF_BORDER_LABEL` to your shell variable
+
+```bash
+# ~/.bashrc or ~/.zshrc
+export T_FZF_BORDER_LABEL=' Your Custom Label '
+```
+
+or if you use fish:
+
+```fish
+# ~/.config/fish/config.fish
+set -Ux T_FZF_BORDER_LABEL " Your Custom Label "
+```
+
 ## Background
 
 Interested in learning more about how this script came to be? Check out [Smart tmux sessions with zoxide and fzf](https://www.joshmedeski.com/posts/smart-tmux-sessions-with-zoxide-and-fzf/).
 ]
+
+## Startup script
+
+You can run a startup script when you create a new session. This is useful for running a command when you create a new session, like starting a dev server or automatically opening neovim to begin editing a file.
+
+This works by adding a `.t` file to your desired directory. Here is a quick script for bootstrapping that file:
+
+```sh
+touch .t && chmod +x .t && echo -e '#!/usr/bin/env bash\n' > .t && nvim .t
+```
+
+I like opening Neovim and the find file Telescope prompt to quickly find a file to edit. Here is an example of what I put in many of my projects:
+
+```sh
+#!/usr/bin/env bash
+nvim -c 'Telescope find_files'
+```
+
+So, when you open any project that detects a `.t` it will automatically run that script when a session is created.
+
+This feature is in early development so please feel free to give feedback if you have ideas for how to improve on it.
 
 ## Bonus: macOS keyboard shortcut
 
@@ -257,4 +422,18 @@ map cmd+k send_text all \x02\x54
 
 </details>
 
+<details>
+<summary>WezTerm</summary>
+
+Add the following line to your `wezterm.lua` inside the **keys** options
+
+```sh
+{ key = 'j', mods = 'CMD', action = wezterm.action.SendString '\x02\x54' }, -- open t - tmux smart session manager
+
+```
+
+</details>
+
 **Note:** These bindings are based off the default prefix, `ctrl+b` (which converts to `\x02`). If you changed your prefix, I recommend [watching my video](https://www.joshmedeski.com/posts/macos-keyboard-shortcuts-for-tmux/) which goes into depth how to customize your own keybindings in Alacritty.
+
+</details>

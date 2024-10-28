@@ -9,19 +9,31 @@ return {
     require('which-key').setup()
 
     -- Document existing key chains
-    require('which-key').register {
-      ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-      ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-      ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-      ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
-      ['<leader>n'] = { name = '[N]ew', _ = 'which_key_ignore' },
-      ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-      ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      ['<leader>u'] = { name = '[U]tils', _ = 'which_key_ignore' },
-      ['<leader>ut'] = { name = '[T]ypescript', _ = 'which_key_ignore' },
-      ['<leader>l'] = { name = '[L]SP', _ = 'which_key_ignore' },
-      ['<leader>ld'] = { name = '[L]SP [D]ocument', _ = 'which_key_ignore' },
-      ['<leader>X'] = { name = 'Diagnostics', _ = 'which_key_ignore' },
+    require('which-key').add {
+
+      { '<leader>b', group = '[B]uffer' },
+      -- { '<leader>b_', hidden = true },
+      { '<leader>c', group = '[C]ode' },
+      { '<leader>d', group = '[D]iagnostics' },
+      { '<leader>d_', hidden = true },
+      { '<leader>g', group = '[G]it' },
+      { '<leader>g_', hidden = true },
+      { '<leader>l', group = '[L]SP' },
+      { '<leader>l_', hidden = true },
+      { '<leader>n', group = '[N]ew' },
+      { '<leader>n_', hidden = true },
+      { '<leader>q', group = '[Q]uit / Sessions' },
+      { '<leader>q_', hidden = true },
+      { '<leader>s', group = '[S]earch' },
+      { '<leader>s_', hidden = true },
+      { '<leader>u', group = '[U]tils' },
+      { '<leader>u_', hidden = true },
+      { '<leader>ut', group = '[T]ypescript' },
+      { '<leader>ut_', hidden = true },
+      { '<leader>w', group = '[W]orkspace' },
+      { '<leader>w_', hidden = true },
+      { '<leader>x', group = 'Trouble' },
+      { '<leader>x_', hidden = true },
     }
   end,
 }

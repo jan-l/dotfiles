@@ -8,11 +8,11 @@ return {
   },
   keys = {
     {
-      '<leader>nc',
+      '<leader>cc',
       function()
         require('neogen').generate { type = 'func' }
       end,
-      desc = 'Neogen comment',
+      desc = '[C]reate function [C]omment',
     },
   },
 }

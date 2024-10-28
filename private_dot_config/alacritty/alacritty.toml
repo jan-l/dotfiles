@@ -1,4 +1,6 @@
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+# import = ["~/.config/alacritty/tokyonight_night.toml"]
+# import = ["~/.config/alacritty/rose-pine.toml"]
 live_config_reload = true
 
 [cursor]
@@ -7,11 +9,14 @@ unfocused_hollow = true
 [cursor.style]
 shape = "Block"
 
+[selection]
+save_to_clipboard = true 
+
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 16
+size = 14
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -95,7 +100,7 @@ key = "Key6"
 mods = "Command"
 
 [shell]
-# program = "/opt/homebrew/bin/fish"
+program = "/usr/bin/fish"
 
 [window]
 decorations = "buttonless"

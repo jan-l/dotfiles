@@ -18,7 +18,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
   },
   config = function()
     local trouble = require 'trouble'
-    local trouble_telescope = require 'trouble.providers.telescope'
+    local trouble_telescope = require 'trouble.sources.telescope'
     local transform_mod = require('telescope.actions.mt').transform_mod
 
     local custom_actions = transform_mod {
@@ -31,7 +31,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
       defaults = {
         path_display = { 'smart' },
         layout_strategy = 'horizontal',
-        layout_config = { prompt_position = 'bottom' },
+        layout_config = {
+          horizontal = {
+            preview_width = 0.55,
+            prompt_position = 'bottom',
+            width = 0.95,
+            preview_cutoff = 10,
+          },
+        },
         sorting_strategy = 'descending',
         winblend = 0,
         mappings = {
@@ -42,11 +49,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
             ['<C-j>'] = require('telescope.actions').move_selection_next, -- move to next result
             ['<C-k>'] = require('telescope.actions').move_selection_previous, -- move to prev result
             ['<C-q'] = require('telescope.actions').send_selected_to_qflist + custom_actions.open_trouble_qflist,
-            ['<C-t'] = trouble_telescope.smart_open_with_trouble,
+            ['<C-t'] = trouble_telescope.open,
           },
         },
       },
-      -- pickers = {}
+      -- pickers = {},
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -78,15 +85,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
         no_ignore = true,
       }
     end, { desc = '[S]earch [A]ll Files' })
-
-    -- Slightly advanced example of overriding default behavior and theme
-    vim.keymap.set('n', '<leader>/', function()
-      -- You can pass additional configuration to telescope to change theme, layout, etc.
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 5,
-        previewer = false,
-      })
-    end, { desc = '[/] Fuzzily search in current buffer' })
 
     -- Also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys
